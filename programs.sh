@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# Variables
-AUTO_DIR="$HOME/.config/autostart"
-
 # Update and Upgrade
 sudo apt-get update
 sudo apt-get upgrade
