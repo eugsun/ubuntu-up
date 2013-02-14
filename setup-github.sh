@@ -11,7 +11,7 @@ ssh-keygen -t rsa -C "eug.sun@gmail.com"
 xclip -sel clip < "$HOME/.ssh/id_rsa.pub"
 
 # Prompt to do github setup
-echo "Go set up github.com, and then press any key..."
+echo "SSH pub key copied. Go paste it at github.com, and then press any key to continue..."
 read INPUT
 
 # Test connection
