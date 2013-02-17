@@ -7,13 +7,14 @@ sudo apt-get upgrade
 # Install Applications
 ## Some Packages
 sudo apt-get install \
+    linux-headers-generic \
     compizconfig-settings-manager synaptic \
     git svn-workbench \
     vim emacs eclipse \
     tilda xclip dia \
     chromium-browser \
     vlc banshee \
-    pidgin \
+    deluge pidgin \
     texlive texlive-xetex texlive-latex-extra auctex yasnippet
 
 ## Dropbox
