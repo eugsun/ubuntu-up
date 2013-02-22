@@ -7,11 +7,12 @@ sudo apt-get upgrade
 # Install Applications
 ## Some Packages
 sudo apt-get install \
-    linux-headers-generic \
+    build-essential linux-headers-generic \
     compizconfig-settings-manager synaptic \
-    git svn-workbench \
+    sqlite3 libsqlite3-dev ibus-1.0 \
+    git svn-workbench scons\
     vim emacs eclipse \
-    tilda xclip dia \
+    wine tilda xclip dia \
     chromium-browser \
     vlc banshee \
     deluge pidgin \
