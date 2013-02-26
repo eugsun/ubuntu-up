@@ -8,6 +8,7 @@ sudo apt-get upgrade
 ## Some Packages
 sudo apt-get install \
     build-essential linux-headers-generic \
+    mono-complete gtk-sharp2 \
     compizconfig-settings-manager synaptic \
     sqlite3 libsqlite3-dev ibus-1.0 \
     git svn-workbench scons\
