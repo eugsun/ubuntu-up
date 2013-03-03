@@ -5,10 +5,9 @@ sudo apt-get update
 sudo apt-get upgrade
 
 # Install Applications
-## Some Packages
 sudo apt-get install \
-    build-essential linux-headers-generic \
-    mono-complete gtk-sharp2 \
+    aptitude build-essential linux-headers-generic \
+    icedtea-7-plugin mono-complete gtk-sharp2 \
     compizconfig-settings-manager synaptic \
     sqlite3 libsqlite3-dev ibus-1.0 \
     git svn-workbench scons\
@@ -18,7 +17,3 @@ sudo apt-get install \
     vlc banshee \
     deluge pidgin \
     texlive texlive-xetex texlive-latex-extra auctex yasnippet
-
-## Dropbox
-cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
-~/.dropbox-dist/dropboxd &
