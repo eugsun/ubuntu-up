@@ -32,3 +32,18 @@ Name=Tilda
 Comment[en_US]=Tilda
 Comment=Tilda"
 echo "$TILDA_ASTR" > $TILDA
+
+## IBus
+IBUS="$AUTO_LOC/ibus.desktop"
+IBUS_ASTR=\
+"[Desktop Entry]
+Type=Application
+Exec=ibus-daemon
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=IBus-Daemon
+Name=IBus-Daemon
+Comment[en_US]=IBus-Daemon
+Comment=IBus-Daemon"
+echo "$IBUS_ASTR" > $IBUS
