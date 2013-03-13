@@ -1,8 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 
-sh ./programs.sh
-sh ./setup-videocard.sh
-sh ./setup-github.sh
-sh ./setup-sunpinyin.sh
-sh ./path.sh
-sh ./autostarts.sh
+bash ./programs.sh
+bash ./setup-videocard.sh
+bash ./setup-github.sh
+bash ./setup-emacs.sh
+bash ./setup-sunpinyin.sh
+bash ./path.sh
+bash ./autostarts.sh

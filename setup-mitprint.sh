@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 cd $HOME/Downloads/
 wget -N http://debathena.mit.edu/apt/debathena-archive.asc;

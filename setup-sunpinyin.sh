@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 SRC_DIR="$HOME/Sources"
 ROOT_DIR="$SRC_DIR/sunpinyin.git"

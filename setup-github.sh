@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Set up git user and email
 git config --global user.name "Eugene Y. Sun"

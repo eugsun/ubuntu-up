@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 PROFILE_LOC="$HOME/.profile"
 
