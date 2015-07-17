@@ -17,3 +17,4 @@ read INPUT
 # Test connection
 ssh-add
 ssh -T git@github.com
+
