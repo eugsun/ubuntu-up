@@ -1,0 +1,51 @@
+---
+- hosts: localhost
+  vars:
+    apps:
+      - gnome-tweak-tool
+      - terminator
+      - emacs
+      - zsh
+      - vlc
+      - openssh-server
+      - tmux
+
+  tasks:
+    - name: Install packages
+      apt:
+        name: "{{ item }}"
+        state: present
+      with_items: "{{ apps }}"
+      become: True
+
+    - name: Clone oh-my-zsh repo
+      git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=~/.oh-my-zsh
+      args:
+        update: no
+
+    - name: Install spacemacs
+      git: repo=https://github.com/syl20bnr/spacemacs.git dest=~/.emacs.d
+      args:
+        update: no
+
+    - name: Import spacemacs settings
+      git: repo=git@github.com:eugsun/spacemacs.d.git dest=~/.spacemacs.d
+      args:
+        update: no
+
+    - name: Remap Esc and CapsLock
+      copy: src=files/xmodmap-esc-caps-flip dest=~/.Xmodmap
+
+    - name: Check Dropbox installation
+      command: dropbox
+      register: dropbox_result
+      ignore_errors: True
+
+    - name: Download Dropbox
+      get_url: url="https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb" dest="/tmp/dropbox.deb"
+      when: dropbox_result is failed
+
+    - name: Install Dropbox
+      apt: deb="/tmp/dropbox.deb"
+      become: True
+      when: dropbox_result is failed

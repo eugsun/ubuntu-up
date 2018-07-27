@@ -1,0 +1,35 @@
+---
+- hosts: localhost
+
+  tasks:
+    - name: Add Haxe repository
+      apt_repository:
+        repo: ppa:haxe/releases
+      become: true
+
+    - name: Install Haxe
+      apt: name=haxe state=present
+      become: true
+
+    - name: Create haxelib folder
+      file: path=~/.haxe-libs state=directory
+
+    - name: Setup haxelib
+      shell: haxelib setup ~/.haxe-libs
+
+    - name: Install Haxe libs
+      shell: haxelib install {{item}}
+      with_items:
+        - lime
+        - openfl
+        - flixel
+
+    - name: Setup HaxeFlixel
+      shell: haxelib run lime setup flixel
+
+    - name: Setup flixel-tools
+      expect:
+        command: haxelib run flixel-tools setup
+        responses:
+          .*: y
+
