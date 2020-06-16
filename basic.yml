@@ -40,3 +40,7 @@
       git: repo=https://github.com/eugsun/dotfiles.git dest=~/.dotfiles
       args:
         update: no
+
+    - name: Install calibre
+      shell: wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sh /dev/stdin
+      become: True
