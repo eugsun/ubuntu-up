@@ -1,0 +1,81 @@
+---
+- hosts: localhost
+  vars:
+    apps:
+      - autoconf 
+      - automake 
+      - libtool 
+      - texinfo 
+      - xorg-dev 
+      - libgtk2.0-dev 
+      - libjpeg-dev 
+      - libncurses5-dev 
+      - libdbus-1-dev 
+      - libgif-dev 
+      - libtiff-dev 
+      - libm17n-dev 
+      - libpng-dev 
+      - librsvg2-dev 
+      - libotf-dev 
+      - libgnutls28-dev 
+      - libxml2-dev 
+      - libm17n-dev 
+      - libjansson-dev
+      - sqlite3  # for org-roam
+
+  tasks:
+    - name: Install packages
+      apt:
+        name: "{{ apps }}"
+        state: present
+      become: True
+
+    - name: Get repo
+      git: 
+        repo: https://github.com/emacs-mirror/emacs.git 
+        dest: ~/Den/emacs
+        version: emacs-27.0.91
+        depth: 1
+        update: no
+
+    - name: Check installation
+      stat:
+        path: ~/Apps/emacs
+      register: install_result 
+      ignore_errors: True
+
+    - name: Copy over install scripts
+      copy: src=emacs/install.sh dest=~/Den/emacs/install.sh
+
+    - name: Run installation
+      shell: cd ~/Den/emacs && sh ./install.sh
+      when: not install_result.stat.exists
+
+    - name: Get Doom repo
+      git: 
+        repo: https://github.com/hlissner/doom-emacs.git 
+        dest: ~/.emacs.d
+        version: develop
+        depth: 1
+        update: no
+
+    - name: Check doom installation
+      stat:
+        path: ~/.doom.d
+      register: doom_install_result 
+      ignore_errors: True
+
+    - name: Install Doom
+      shell: ~/.emacs.d/bin/doom install --no-config
+      when: not doom_install_result.stat.exists
+
+    - name: Get Doom config
+      git: 
+        repo: https://github.com/eugsun/doom.d.git 
+        dest: ~/.doom.d
+        update: no
+        force: yes
+
+    - name: Doom sync
+      shell: ~/.emacs.d/bin/doom sync
+
