@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Add key
+      shell: gpg --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+
+    - name: Install RVM
+      shell: curl -sSL https://get.rvm.io | bash -s stable
+
+    - name: Install Ruby
+      shell: rvm install ruby-2.7 && rvm use ruby-2.7

@@ -1,0 +1,6 @@
+
+---
+- hosts: localhost
+  tasks:
+    - name: Install CLI
+      shell: curl -sL https://firebase.tools | bash

@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+
+  tasks:
+    - name: Add repository
+      apt_repository:
+        repo: ppa:hvr/ghc
+      become: true
+
+    - name: Install Cabal
+      apt: name=cabal-install state=present
+      become: true
+
+    - name: Install GHC
+      apt: name=ghc state=present
+      become: true

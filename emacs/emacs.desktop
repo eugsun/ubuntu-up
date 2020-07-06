@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=27.0.91
+Name=Emacs
+Exec=/home/eugsun/Apps/emacs/bin/emacs
+Icon=/home/eugsun/Apps/emacs/share/icons/hicolor/scalable/apps/emacs.ico
+Terminal=false
+Type=Application

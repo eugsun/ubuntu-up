@@ -8,8 +8,10 @@
       - vlc
       - openssh-server
       - tmux
+      - curl
       - wget
       - ripgrep
+      - mpv
 
   tasks:
     - name: Install packages

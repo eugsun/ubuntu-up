@@ -79,3 +79,5 @@
     - name: Doom sync
       shell: ~/.emacs.d/bin/doom sync
 
+    - name: Copy over launcher config
+      copy: src=emacs/emacs.desktop dest=~/.local/share/applications/emacs.desktop
