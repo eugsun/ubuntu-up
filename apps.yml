@@ -1,0 +1,48 @@
+---
+- hosts: localhost
+  vars:
+    apps:
+      - gnome-tweak-tool
+      - terminator
+      - zsh
+      - vlc
+      - openssh-server
+      - tmux
+      - curl
+      - wget
+      - ripgrep
+      - mpv
+
+  tasks:
+    - name: Install packages
+      apt:
+        name: "{{ apps }}"
+        state: present
+      become: True
+
+    - name: Clone oh-my-zsh repo
+      git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=~/.oh-my-zsh
+      args:
+        update: no
+
+#    - name: Remap Esc and CapsLock
+#      copy: src=files/xmodmap-esc-caps-flip dest=~/.Xmodmap
+
+    - name: Check Dropbox installation
+      stat:
+        path: ~/.dropbox-dist/dropboxd
+      register: dropbox_result
+      ignore_errors: True
+
+    - name: Install Dropbox
+      shell: cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+      when: not dropbox_result.stat.exists
+
+    - name: Get dotfile
+      git: repo=https://github.com/eugsun/dotfiles.git dest=~/.dotfiles
+      args:
+        update: no
+
+    - name: Install calibre
+      shell: wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sh /dev/stdin
+      become: True
